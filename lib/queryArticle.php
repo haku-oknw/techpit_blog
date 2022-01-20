@@ -81,8 +81,7 @@ class QueryArticle extends connect {
         $filename = $this->article->getFilename();
       }
 
-      $stmt  = $this->dbh->prepare("UPDATE articles
-        SET title=:title, body=:body, filename=:filename, updated_at=NOW() WHERE id=:id");
+      $stmt  = $this->dbh->prepare("UPDATE articles SET title=:title, body=:body, filename=:filename, updated_at=NOW() WHERE id=:id");
       $stmt->bindParam(':title', $title, PDO::PARAM_STR);
       $stmt->bindParam(':body', $body, PDO::PARAM_STR);
       $stmt->bindParam(':filename', $filename, PDO::PARAM_STR);
@@ -95,8 +94,7 @@ class QueryArticle extends connect {
         $filename = $this->article->getFilename();
       }
 
-      $stmt  = $this->dbh->prepare("INSERT INTO articles (title, body, filename, created_at, updated_at)
-                VALUES (:title, :body, :filename, NOW(), NOW())");
+      $stmt  = $this->dbh->prepare("INSERT INTO articles (title, body, filename, created_at, updated_at) VALUES (:title, :body, :filename, NOW(), NOW())");
       $stmt->bindParam(':title', $title, PDO::PARAM_STR);
       $stmt->bindParam(':body', $body, PDO::PARAM_STR);
       $stmt->bindParam(':filename', $filename, PDO::PARAM_STR);
